@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EMS - Payment Summary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo-title">
+        <span class="logo-circle">EM</span>
+        <div>
+          <h1>Electricity Management System</h1>
+          <p>Payment Summary</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html">Home</a>
+        <a href="pay-bill.html" class="active">Pay Bill</a>
+        <a href="register-complaint.html">Register Complaint</a>
+        <a href="complaint-status.html">Complaint Status</a>
+      </nav>
+      <div class="user-info">
+        <span id="welcomeText">Welcome</span>
+        <button class="btn btn-outline" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <section class="card">
+        <h2>Payment Summary</h2>
+        <p class="muted">
+          Review the payment details before proceeding to enter your card information.
+        </p>
+
+        <div class="summary-grid">
+          <div>
+            <p><strong>Bill Amount:</strong> <span id="billAmount">₹0</span></p>
+            <p><strong>PG Charge (2%):</strong> <span id="pgCharge">₹0</span></p>
+            <p class="total-line">
+              <strong>Total Payable Amount:</strong>
+              <span id="totalPayable">₹0</span>
+            </p>
+          </div>
+          <div>
+            <fieldset class="fieldset">
+              <legend>Mode of Payment</legend>
+              <label class="radio-label">
+                <input type="radio" name="paymentMode" value="Debit Card" checked />
+                Debit Card
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="paymentMode" value="Credit Card" />
+                Credit Card
+              </label>
+            </fieldset>
+          </div>
+        </div>
+
+        <div id="paymentSummaryMessage" class="form-message" aria-live="polite"></div>
+
+        <div class="form-actions">
+          <button class="btn btn-secondary" onclick="navigateTo('home.html')">
+            Back to Home
+          </button>
+          <button class="btn btn-primary" id="payNowBtn">Pay Now</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="footerYear"></span> Electricity Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/billing.js"></script>
+  </body>
+  </html>
+

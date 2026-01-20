@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Electricity Management System - Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo-title">
+        <span class="logo-circle">EM</span>
+        <div>
+          <h1>Electricity Management System</h1>
+          <p>Secure Consumer Portal</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Login</a>
+        <a href="register.html" class="active">Register</a>
+      </nav>
+    </header>
+
+    <main class="auth-container">
+      <section class="card auth-card wide">
+        <h2>Consumer Registration</h2>
+        <p class="muted">
+          Register to view and pay your electricity bills, and to raise and track complaints.
+        </p>
+
+        <form id="registerForm" novalidate>
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="consumerId">Consumer ID (13-digit)</label>
+              <input
+                type="text"
+                id="consumerId"
+                name="consumerId"
+                maxlength="13"
+                required
+              />
+              <small class="error-msg" id="consumerIdError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="billNumber">Bill Number (5-digit)</label>
+              <input
+                type="text"
+                id="billNumber"
+                name="billNumber"
+                maxlength="5"
+                required
+              />
+              <small class="error-msg" id="billNumberError"></small>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <select id="title" name="title" required>
+                <option value="">Select</option>
+                <option>Mr.</option>
+                <option>Ms.</option>
+                <option>Mrs.</option>
+                <option>Dr.</option>
+                <option>Prof.</option>
+              </select>
+              <small class="error-msg" id="titleError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="customerName">Customer Name</label>
+              <input
+                type="text"
+                id="customerName"
+                name="customerName"
+                maxlength="50"
+                required
+              />
+              <small class="error-msg" id="customerNameError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+              />
+              <small class="error-msg" id="emailError"></small>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="countryCode">Mobile Number</label>
+              <div class="phone-wrapper">
+                <select id="countryCode" name="countryCode" required>
+                  <option value="+91">+91 (India)</option>
+                  <option value="+1">+1 (USA)</option>
+                  <option value="+44">+44 (UK)</option>
+                  <option value="+61">+61 (Australia)</option>
+                  <option value="+971">+971 (UAE)</option>
+                </select>
+                <input
+                  type="text"
+                  id="mobileNumber"
+                  name="mobileNumber"
+                  maxlength="10"
+                  required
+                />
+              </div>
+              <small class="error-msg" id="mobileNumberError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="userId">User ID</label>
+              <input
+                type="text"
+                id="userId"
+                name="userId"
+                minlength="5"
+                maxlength="20"
+                required
+              />
+              <small class="error-msg" id="userIdError"></small>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="form-group password-group">
+              <label for="password">Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  maxlength="30"
+                  required
+                />
+                <button
+                  type="button"
+                  class="icon-button"
+                  id="togglePassword"
+                  aria-label="Toggle password visibility"
+                >
+                  👁
+                </button>
+              </div>
+              <div class="password-strength" id="passwordStrength">
+                <span class="strength-label">Strength:</span>
+                <span class="strength-value" id="passwordStrengthValue">-</span>
+              </div>
+              <small class="error-msg" id="passwordError"></small>
+            </div>
+
+            <div class="form-group password-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <div class="password-wrapper">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  maxlength="30"
+                  required
+                />
+                <button
+                  type="button"
+                  class="icon-button"
+                  id="toggleConfirmPassword"
+                  aria-label="Toggle confirm password visibility"
+                >
+                  👁
+                </button>
+              </div>
+              <small class="error-msg" id="confirmPasswordError"></small>
+            </div>
+          </div>
+
+          <div id="registerMessage" class="form-message" aria-live="polite"></div>
+
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Reset</button>
+            <button type="submit" class="btn btn-primary" id="registerBtn">
+              Register
+            </button>
+          </div>
+        </form>
+
+        <section id="registrationSuccess" class="success-panel" hidden>
+          <h3>Consumer Registration Successful</h3>
+          <p class="success-text">
+            Your account has been created. Please note your Customer ID for future reference.
+          </p>
+          <div class="success-details" id="registrationSummary"></div>
+          <button class="btn btn-primary" id="goToLoginBtn">Go to Login</button>
+        </section>
+      </section>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="footerYear"></span> Electricity Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+  </html>
+

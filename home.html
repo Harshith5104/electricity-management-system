@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EMS - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo-title">
+        <span class="logo-circle">EM</span>
+        <div>
+          <h1>Electricity Management System</h1>
+          <p>Consumer Dashboard</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html" class="active">Home</a>
+        <a href="pay-bill.html">Pay Bill</a>
+        <a href="register-complaint.html">Register Complaint</a>
+        <a href="complaint-status.html">Complaint Status</a>
+      </nav>
+      <div class="user-info">
+        <span id="welcomeText">Welcome</span>
+        <button class="btn btn-outline" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="dashboard-container">
+      <section class="grid-3 dashboard-cards">
+        <div class="card stat-card">
+          <h3>Total Outstanding Bills</h3>
+          <p class="stat-value" id="totalOutstandingAmount">₹0</p>
+          <p class="muted" id="totalOutstandingCount">0 unpaid bills</p>
+          <button class="btn btn-primary btn-small" onclick="navigateTo('pay-bill.html')">
+            Pay Bills
+          </button>
+        </div>
+
+        <div class="card stat-card">
+          <h3>Recent Complaints</h3>
+          <p class="stat-value" id="recentComplaintsCount">0</p>
+          <p class="muted">Last 30 days</p>
+          <button
+            class="btn btn-primary btn-small"
+            onclick="navigateTo('register-complaint.html')"
+          >
+            Register Complaint
+          </button>
+        </div>
+
+        <div class="card stat-card">
+          <h3>Quick Actions</h3>
+          <ul class="quick-actions">
+            <li><a href="pay-bill.html">Pay Outstanding Bills</a></li>
+            <li><a href="register-complaint.html">Register a New Complaint</a></li>
+            <li><a href="complaint-status.html">Track Existing Complaints</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="grid-2">
+        <div class="card">
+          <h3>Unpaid Bills Summary</h3>
+          <table class="table" id="dashboardBillsTable" aria-label="Unpaid bills">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Due Date</th>
+                <th class="text-right">Amount (₹)</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <h3>Recent Complaints</h3>
+          <table class="table" id="dashboardComplaintsTable" aria-label="Recent complaints">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="footerYear"></span> Electricity Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/billing.js"></script>
+    <script src="js/complaints.js"></script>
+  </body>
+  </html>
+

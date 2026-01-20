@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EMS - Register Complaint</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo-title">
+        <span class="logo-circle">EM</span>
+        <div>
+          <h1>Electricity Management System</h1>
+          <p>Register Complaint</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html">Home</a>
+        <a href="pay-bill.html">Pay Bill</a>
+        <a href="register-complaint.html" class="active">Register Complaint</a>
+        <a href="complaint-status.html">Complaint Status</a>
+      </nav>
+      <div class="user-info">
+        <span id="welcomeText">Welcome</span>
+        <button class="btn btn-outline" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <section class="card">
+        <h2>Complaint Registration</h2>
+        <p class="muted">
+          Please provide accurate details to help us resolve your issue quickly.
+        </p>
+
+        <form id="complaintForm" novalidate>
+          <div class="grid-3">
+            <div class="form-group">
+              <label for="complaintType">Complaint / Service Type</label>
+              <select id="complaintType" name="complaintType" required>
+                <option value="">Select type</option>
+                <option>Billing Related</option>
+                <option>Voltage Related</option>
+                <option>Frequent Disruption</option>
+                <option>Street Light Related</option>
+                <option>Pole Related</option>
+                <option>Meter Issue</option>
+                <option>New Connection</option>
+                <option>Other</option>
+              </select>
+              <small class="error-msg" id="complaintTypeError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="complaintCategory">Category</label>
+              <select id="complaintCategory" name="complaintCategory" required>
+                <option value="">Select category</option>
+              </select>
+              <small class="error-msg" id="complaintCategoryError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="contactPerson">Contact Person</label>
+              <input
+                type="text"
+                id="contactPerson"
+                name="contactPerson"
+                maxlength="50"
+                required
+              />
+              <small class="error-msg" id="contactPersonError"></small>
+            </div>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label for="landmark">Landmark</label>
+              <input
+                type="text"
+                id="landmark"
+                name="landmark"
+                maxlength="80"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="complaintConsumerNo">Consumer No (13-digit)</label>
+              <input
+                type="text"
+                id="complaintConsumerNo"
+                name="complaintConsumerNo"
+                maxlength="13"
+                required
+              />
+              <small class="error-msg" id="complaintConsumerNoError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="complaintMobile">Mobile Number</label>
+              <input
+                type="text"
+                id="complaintMobile"
+                name="complaintMobile"
+                maxlength="10"
+                required
+              />
+              <small class="error-msg" id="complaintMobileError"></small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="complaintAddress">Address</label>
+            <textarea
+              id="complaintAddress"
+              name="complaintAddress"
+              rows="3"
+              required
+            ></textarea>
+            <small class="error-msg" id="complaintAddressError"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="problemDescription">
+              Problem Description
+              <span class="tooltip" aria-label="Please describe the issue in at least 20 characters.">?</span>
+            </label>
+            <textarea
+              id="problemDescription"
+              name="problemDescription"
+              rows="4"
+              required
+            ></textarea>
+            <small class="error-msg" id="problemDescriptionError"></small>
+          </div>
+
+          <div id="complaintMessage" class="form-message" aria-live="polite"></div>
+
+          <div class="form-actions">
+            <button type="reset" class="btn btn-secondary">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="submitComplaintBtn">
+              Submit Complaint
+            </button>
+          </div>
+        </form>
+
+        <section id="complaintSuccess" class="success-panel" hidden>
+          <h3>Complaint Registered Successfully</h3>
+          <p class="success-text">
+            Your complaint has been recorded. Our team will get in touch with you shortly.
+          </p>
+          <div class="success-details" id="complaintSummary"></div>
+          <div class="form-actions">
+            <button
+              class="btn btn-primary"
+              type="button"
+              onclick="navigateTo('complaint-status.html')"
+            >
+              Track Complaint
+            </button>
+            <button
+              class="btn btn-secondary"
+              type="button"
+              onclick="navigateTo('home.html')"
+            >
+              Back to Home
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="footerYear"></span> Electricity Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/complaints.js"></script>
+  </body>
+  </html>
+

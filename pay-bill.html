@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EMS - Pay Bill</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo-title">
+        <span class="logo-circle">EM</span>
+        <div>
+          <h1>Electricity Management System</h1>
+          <p>Pay Your Bills</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html">Home</a>
+        <a href="pay-bill.html" class="active">Pay Bill</a>
+        <a href="register-complaint.html">Register Complaint</a>
+        <a href="complaint-status.html">Complaint Status</a>
+      </nav>
+      <div class="user-info">
+        <span id="welcomeText">Welcome</span>
+        <button class="btn btn-outline" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <section class="card">
+        <h2>Select Bills to Pay</h2>
+        <p class="muted">
+          Choose one or more unpaid bills to proceed to payment. Total amount will update
+          automatically.
+        </p>
+
+        <table class="table selectable" id="billsTable" aria-label="Bills list">
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" id="selectAllBills" />
+              </th>
+              <th>Consumer No.</th>
+              <th>Bill Month</th>
+              <th>Due Date</th>
+              <th class="text-right">Amount (₹)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <div class="bill-summary">
+          <div>
+            <span class="muted">Selected Bills:</span>
+            <span id="selectedBillsCount">0</span>
+          </div>
+          <div>
+            <span class="muted">Total Amount:</span>
+            <span class="total-amount" id="selectedBillsTotal">₹0</span>
+          </div>
+        </div>
+
+        <div id="billSelectionMessage" class="form-message" aria-live="polite"></div>
+
+        <div class="form-actions">
+          <button class="btn btn-secondary" onclick="navigateTo('home.html')">
+            Back to Home
+          </button>
+          <button class="btn btn-primary" id="proceedToPayBtn">
+            Proceed to Pay
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="footerYear"></span> Electricity Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/billing.js"></script>
+  </body>
+  </html>
+

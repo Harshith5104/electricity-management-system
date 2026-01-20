@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EMS - Card Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo-title">
+        <span class="logo-circle">EM</span>
+        <div>
+          <h1>Electricity Management System</h1>
+          <p>Card Payment</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html">Home</a>
+        <a href="pay-bill.html" class="active">Pay Bill</a>
+        <a href="register-complaint.html">Register Complaint</a>
+        <a href="complaint-status.html">Complaint Status</a>
+      </nav>
+      <div class="user-info">
+        <span id="welcomeText">Welcome</span>
+        <button class="btn btn-outline" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <section class="card">
+        <h2>Enter Card Details</h2>
+        <p class="muted">
+          We use secure processing for your payment information. Fields marked * are mandatory.
+        </p>
+
+        <form id="cardForm" novalidate>
+          <div class="form-group">
+            <label for="cardNumber">
+              Card Number
+              <span class="tooltip" aria-label="Enter 16-digit card number. Spaces will be added automatically.">?</span>
+            </label>
+            <input
+              type="text"
+              id="cardNumber"
+              name="cardNumber"
+              maxlength="19"
+              autocomplete="off"
+              required
+            />
+            <small class="error-msg" id="cardNumberError"></small>
+          </div>
+
+          <div class="form-group">
+            <label for="cardHolderName">Card Holder Name</label>
+            <input
+              type="text"
+              id="cardHolderName"
+              name="cardHolderName"
+              maxlength="40"
+              required
+            />
+            <small class="error-msg" id="cardHolderNameError"></small>
+          </div>
+
+          <div class="grid-3">
+            <div class="form-group">
+              <label for="expiryDate">
+                Expiry Date (MM/YY)
+                <span class="tooltip" aria-label="Expiry date must be a future month and year.">?</span>
+              </label>
+              <input
+                type="text"
+                id="expiryDate"
+                name="expiryDate"
+                maxlength="5"
+                placeholder="MM/YY"
+                required
+              />
+              <small class="error-msg" id="expiryDateError"></small>
+            </div>
+
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input
+                type="password"
+                id="cvv"
+                name="cvv"
+                maxlength="3"
+                required
+              />
+              <small class="error-msg" id="cvvError"></small>
+            </div>
+
+            <div class="form-group">
+              <label>Amount to Pay</label>
+              <p class="total-amount" id="cardAmountToPay">₹0</p>
+            </div>
+          </div>
+
+          <div id="cardMessage" class="form-message" aria-live="polite"></div>
+
+          <div class="form-actions">
+            <button class="btn btn-secondary" type="button" onclick="navigateTo('home.html')">
+              Back to Home
+            </button>
+            <button class="btn btn-primary" type="submit" id="makePaymentBtn">
+              Make Payment
+            </button>
+          </div>
+        </form>
+
+        <section id="paymentSuccess" class="success-panel" hidden>
+          <h3>Payment Successful</h3>
+          <p class="success-text">
+            Your transaction has been completed successfully. A receipt is available below.
+          </p>
+          <div class="success-details" id="paymentSummary"></div>
+          <div class="form-actions">
+            <button class="btn btn-primary" id="downloadReceiptBtn">
+              Download Receipt
+            </button>
+            <button class="btn btn-outline" id="printReceiptBtn">
+              Print Receipt
+            </button>
+            <button class="btn btn-secondary" type="button" onclick="navigateTo('home.html')">
+              Back to Home
+            </button>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="footerYear"></span> Electricity Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/billing.js"></script>
+  </body>
+  </html>
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Electricity Management System - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo-title">
+        <span class="logo-circle">EM</span>
+        <div>
+          <h1>Electricity Management System</h1>
+          <p>Secure Consumer Portal</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html" class="active">Login</a>
+        <a href="register.html">Register</a>
+      </nav>
+    </header>
+
+    <main class="auth-container">
+      <section class="card auth-card">
+        <h2>Consumer Login</h2>
+        <p class="muted">Sign in to manage your electricity bills and complaints.</p>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="loginUserId">User ID</label>
+            <input
+              type="text"
+              id="loginUserId"
+              name="userId"
+              required
+              maxlength="20"
+              autocomplete="username"
+            />
+            <small class="error-msg" id="loginUserIdError"></small>
+          </div>
+
+          <div class="form-group password-group">
+            <label for="loginPassword">Password</label>
+            <div class="password-wrapper">
+              <input
+                type="password"
+                id="loginPassword"
+                name="password"
+                required
+                maxlength="30"
+                autocomplete="current-password"
+              />
+              <button
+                type="button"
+                class="icon-button"
+                id="toggleLoginPassword"
+                aria-label="Toggle password visibility"
+              >
+                👁
+              </button>
+            </div>
+            <small class="error-msg" id="loginPasswordError"></small>
+          </div>
+
+          <div class="form-footer">
+            <a href="#" class="link-muted" id="forgotPasswordLink">Forgot Password?</a>
+          </div>
+
+          <div id="loginMessage" class="form-message" aria-live="polite"></div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="loginBtn">
+            Login
+          </button>
+
+          <div class="form-footer">
+            <span class="muted">New consumer?</span>
+            <a href="register.html">Register here</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="footerYear"></span> Electricity Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+  </html>
+

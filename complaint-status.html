@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>EMS - Complaint Status</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="logo-title">
+        <span class="logo-circle">EM</span>
+        <div>
+          <h1>Electricity Management System</h1>
+          <p>Complaint Status</p>
+        </div>
+      </div>
+      <nav class="main-nav">
+        <a href="home.html">Home</a>
+        <a href="pay-bill.html">Pay Bill</a>
+        <a href="register-complaint.html">Register Complaint</a>
+        <a href="complaint-status.html" class="active">Complaint Status</a>
+      </nav>
+      <div class="user-info">
+        <span id="welcomeText">Welcome</span>
+        <button class="btn btn-outline" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <main class="page-container">
+      <section class="card">
+        <h2>Track Your Complaints</h2>
+        <p class="muted">
+          View and filter complaints registered from your account. Click on a complaint to
+          see detailed information.
+        </p>
+
+        <div class="filter-bar">
+          <div class="filter-group">
+            <label for="statusFilter">Status</label>
+            <select id="statusFilter">
+              <option value="all">All</option>
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Resolved">Resolved</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="searchComplaint">Search</label>
+            <input
+              type="text"
+              id="searchComplaint"
+              placeholder="Search by ID, Type, Category"
+            />
+          </div>
+        </div>
+
+        <table class="table" id="complaintsTable" aria-label="Complaints list">
+          <thead>
+            <tr>
+              <th>Complaint ID</th>
+              <th>Type</th>
+              <th>Registered Date</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <div id="complaintStatusMessage" class="form-message" aria-live="polite"></div>
+      </section>
+
+      <section class="card" id="complaintDetailsPanel" hidden>
+        <h3>Complaint Details</h3>
+        <div id="complaintDetails"></div>
+      </section>
+    </main>
+
+    <div id="globalLoader" class="loader-overlay" aria-hidden="true">
+      <div class="loader-card">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <p>&copy; <span id="footerYear"></span> Electricity Management System. All rights reserved.</p>
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/complaints.js"></script>
+  </body>
+  </html>
+
